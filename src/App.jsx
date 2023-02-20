@@ -1,8 +1,9 @@
 import {useState, useEffect} from "react";
 import { Heading, Box, Image, Flex, Text, Spacer, Tag } from '@chakra-ui/react';
+import { HiCalendar } from "react-icons/hi";
 import * as API from "./services/launches";
 import logo from "./assets/logo-spaceX.png";
-import { chakra } from "@chakra-ui/react";
+
 
 export function App() {
   const [launches, setLaunches] = useState([]);
@@ -33,6 +34,12 @@ export function App() {
               <Tag p={4} colorScheme="green">
                 {launch.launch_success ? "Success" : "Failure"}
               </Tag>
+            </Flex>
+            <Flex align="center">
+              <HiCalendar/>
+              <Text fontSize="sm" ml={1} >
+                  { launch.launch_date_local.split("T")[0] }
+              </Text>
             </Flex>
             {launch.mission_name} ({launch.launch_year})
           </Box>
